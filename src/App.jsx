@@ -3,9 +3,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import Layout from '@/Layout';
 import { routeArray } from '@/config/routes';
+import { initializeNotifications } from '@/services/api/notificationService';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
+  // Initialize notifications on app start
+  React.useEffect(() => {
+    initializeNotifications();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>

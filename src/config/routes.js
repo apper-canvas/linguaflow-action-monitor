@@ -5,6 +5,7 @@ import Progress from '@/components/pages/Progress';
 import Flashcards from '@/components/pages/Flashcards';
 import Leaderboard from '@/components/pages/Leaderboard';
 import SpeakingPractice from '@/components/pages/SpeakingPractice';
+import NotificationSettings from '@/components/pages/NotificationSettings';
 
 export const routes = {
   dashboard: {
@@ -40,9 +41,9 @@ export const routes = {
     label: 'Quiz',
     path: '/quiz/:lessonId',
     icon: 'FileQuestion',
-    component: Quiz
+component: Quiz
   },
-progress: {
+  progress: {
     id: 'progress',
     label: 'Progress',
     path: '/progress',
@@ -55,7 +56,13 @@ progress: {
     path: '/speaking-practice',
     icon: 'Mic',
     component: SpeakingPractice
-  }
+  },
+  notifications: {
+    id: 'notifications',
+    label: 'Reminders',
+    path: '/notifications',
+    icon: 'Bell',
+    component: NotificationSettings
 };
 
 export const routeArray = Object.values(routes);

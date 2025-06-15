@@ -25,7 +25,14 @@ const initialProgress = {
     { id: 'xp-1000', name: 'XP Master', description: 'Earn 1000 XP', unlocked: true },
     { id: 'first-recording', name: 'Voice Activated', description: 'Complete your first speaking exercise', unlocked: true },
     { id: 'pronunciation-80', name: 'Clear Speaker', description: 'Achieve 80% pronunciation accuracy', unlocked: true }
-  ]
+],
+  dailyPractice: {
+    lastPracticeDate: null,
+    todayCompleted: false,
+    remindersSent: 0,
+    preferredReminderTime: '19:00',
+    enabledActivities: ['lessons', 'flashcards', 'speaking']
+  }
 };
 
 let userProgressData = { ...initialProgress };
@@ -139,7 +146,32 @@ async unlockAchievement(achievementId) {
       toast.success(`🏆 Achievement unlocked: ${achievement.name}!`, {
         autoClose: 5000
       });
-    }
+}
+    return { ...userProgressData };
+  },
+
+  async markDailyPracticeComplete() {
+    await delay(200);
+    const today = new Date().toDateString();
+    userProgressData.dailyPractice.lastPracticeDate = today;
+    userProgressData.dailyPractice.todayCompleted = true;
+    userProgressData.dailyPractice.remindersSent = 0;
+    
+    toast.success('Daily practice complete! Keep up the great work! 🎉', {
+      className: 'bg-gradient-to-r from-success to-accent text-white'
+    });
+    
+    return { ...userProgressData };
+  },
+
+  async updateReminderPreferences(preferences) {
+    await delay(200);
+    userProgressData.dailyPractice = {
+      ...userProgressData.dailyPractice,
+      ...preferences
+    };
+    
+    toast.success('Reminder preferences updated!');
     return { ...userProgressData };
   }
 };

@@ -22,10 +22,11 @@
     "date-fns": "^4.1.0",
     "react-redux": "^9.2.0",
     "@reduxjs/toolkit": "2.7.0",
-    "recordrtc": "^5.6.2",
+"recordrtc": "^5.6.2",
     "web-audio-api": "^0.2.2"
   },
   "devDependencies": {
+    "@types/node": "^20.0.0",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",

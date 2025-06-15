@@ -3,16 +3,19 @@ import { Outlet, NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import ApperIcon from '@/components/ApperIcon';
 import { useUserProgress } from '@/services/userProgressService';
+import { useNotifications } from '@/services/api/notificationService';
 
 const Layout = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+const location = useLocation();
   const { userProgress } = useUserProgress();
+  const { hasUnreadReminders, requestPermission } = useNotifications();
 
 const navItems = [
     { path: '/', label: 'Dashboard', icon: 'Home' },
     { path: '/leaderboard', label: 'Leaderboard', icon: 'Trophy' },
-    { path: '/progress', label: 'Progress', icon: 'TrendingUp' }
+    { path: '/progress', label: 'Progress', icon: 'TrendingUp' },
+    { path: '/notifications', label: 'Reminders', icon: 'Bell' }
   ];
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -69,7 +72,19 @@ const navItems = [
                 <span className="text-white font-semibold text-sm">
                   {userProgress?.currentStreak || 0}
                 </span>
-              </div>
+</div>
+
+              {/* Notification Bell */}
+              <button
+                onClick={requestPermission}
+                className="relative p-2 rounded-lg text-surface-600 hover:text-surface-900 hover:bg-surface-100 transition-colors"
+                title="Daily Practice Reminders"
+              >
+                <ApperIcon name="Bell" className="w-5 h-5" />
+                {hasUnreadReminders && (
+                  <span className="absolute -top-1 -right-1 w-3 h-3 bg-error rounded-full animate-pulse" />
+                )}
+              </button>
 
               {/* Mobile Menu Button */}
               <button
