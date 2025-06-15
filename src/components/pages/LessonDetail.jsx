@@ -14,20 +14,26 @@ const LessonDetail = () => {
   const { courseId, lessonId } = useParams();
   const navigate = useNavigate();
   const [lesson, setLesson] = useState(null);
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [completing, setCompleting] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+  const [downloadStatus, setDownloadStatus] = useState(null);
 
   useEffect(() => {
     loadLesson();
   }, [lessonId]);
 
-  const loadLesson = async () => {
+const loadLesson = async () => {
     setLoading(true);
     setError(null);
     try {
       const result = await lessonService.getById(lessonId);
       setLesson(result);
+      
+      // Check download status
+      const status = lessonService.getDownloadStatus(lessonId);
+      setDownloadStatus(status);
     } catch (err) {
       setError(err.message || 'Failed to load lesson');
       toast.error('Failed to load lesson');
@@ -57,6 +63,42 @@ const LessonDetail = () => {
       toast.error('Failed to complete lesson');
     } finally {
       setCompleting(false);
+    }
+};
+
+  const handleDownload = async () => {
+    if (!lesson) return;
+    
+    setDownloading(true);
+    try {
+      // Start download
+      await lessonService.downloadVideo(lesson.id);
+      
+      // Poll for status updates during download
+      const pollStatus = setInterval(() => {
+        const status = lessonService.getDownloadStatus(lesson.id);
+        setDownloadStatus(status);
+        
+        if (status && (status.status === 'completed' || status.status === 'error')) {
+          clearInterval(pollStatus);
+          setDownloading(false);
+        }
+      }, 1000);
+      
+    } catch (err) {
+      toast.error(err.message || 'Download failed');
+      setDownloading(false);
+    }
+  };
+
+  const handleRemoveDownload = async () => {
+    if (!lesson) return;
+    
+    try {
+      await lessonService.removeDownload(lesson.id);
+      setDownloadStatus(null);
+    } catch (err) {
+      toast.error('Failed to remove download');
     }
   };
 
@@ -126,12 +168,12 @@ const LessonDetail = () => {
         <VideoPlayer lesson={lesson} onComplete={handleCompleteLesson} />
       </motion.div>
 
-      {/* Action Buttons */}
+{/* Action Buttons */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8"
       >
         {/* Complete Lesson */}
         <Button
@@ -144,6 +186,31 @@ const LessonDetail = () => {
         >
           {lesson.completed ? 'Completed' : 'Mark Complete'}
         </Button>
+
+        {/* Download/Remove Button */}
+        {lessonService.isDownloaded(lesson.id) ? (
+          <Button
+            onClick={handleRemoveDownload}
+            variant="outline"
+            icon="Trash2"
+            className="w-full"
+          >
+            Remove Download
+          </Button>
+        ) : (
+          <Button
+            onClick={handleDownload}
+            variant="secondary"
+            disabled={downloading || (downloadStatus?.status === 'downloading')}
+            loading={downloading || (downloadStatus?.status === 'downloading')}
+            icon={downloadStatus?.status === 'downloading' ? "Download" : "Download"}
+            className="w-full"
+          >
+            {downloadStatus?.status === 'downloading' 
+              ? `${downloadStatus.progress}%` 
+              : 'Download'}
+          </Button>
+        )}
 
         {/* Take Quiz */}
         <Button
@@ -165,6 +232,44 @@ const LessonDetail = () => {
           Practice Vocabulary
         </Button>
       </motion.div>
+
+      {/* Download Status Info */}
+      {(downloadStatus?.status === 'downloading' || lessonService.isDownloaded(lesson.id)) && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 p-4 bg-surface-50 rounded-lg border border-surface-200"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <ApperIcon 
+                name={lessonService.isDownloaded(lesson.id) ? "CheckCircle" : "Download"} 
+                className={`w-4 h-4 ${lessonService.isDownloaded(lesson.id) ? 'text-success' : 'text-primary'}`} 
+              />
+              <span className="text-sm font-medium text-surface-700">
+                {lessonService.isDownloaded(lesson.id) 
+                  ? 'Available offline' 
+                  : `Downloading... ${downloadStatus?.progress || 0}%`}
+              </span>
+            </div>
+            {!lessonService.isOnline() && lessonService.isDownloaded(lesson.id) && (
+              <div className="flex items-center space-x-1 text-xs text-surface-500">
+                <ApperIcon name="WifiOff" className="w-3 h-3" />
+                <span>Offline mode</span>
+              </div>
+            )}
+          </div>
+          
+          {downloadStatus?.status === 'downloading' && (
+            <div className="mt-2 w-full bg-surface-200 rounded-full h-2">
+              <div 
+                className="bg-primary h-2 rounded-full transition-all duration-300"
+                style={{ width: `${downloadStatus.progress || 0}%` }}
+              />
+            </div>
+          )}
+        </motion.div>
+      )}
 
       {/* Vocabulary Section */}
       {lesson.vocabulary && lesson.vocabulary.length > 0 && (
