@@ -39,9 +39,9 @@ export const routes = {
   quiz: {
     id: 'quiz',
     label: 'Quiz',
-    path: '/quiz/:lessonId',
+path: '/quiz/:lessonId',
     icon: 'FileQuestion',
-component: Quiz
+    component: Quiz
   },
   progress: {
     id: 'progress',
@@ -63,6 +63,7 @@ component: Quiz
     path: '/notifications',
     icon: 'Bell',
     component: NotificationSettings
+  }
 };
 
 export const routeArray = Object.values(routes);
