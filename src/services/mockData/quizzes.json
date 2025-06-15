@@ -1,0 +1,136 @@
+[
+  {
+    "id": "spanish-1-quiz",
+    "lessonId": "spanish-1",
+    "title": "Basic Greetings Quiz",
+    "passingScore": 70,
+    "xpReward": 50,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How do you say 'Hello' in Spanish?",
+        "type": "multiple-choice",
+        "options": ["Adiós", "Hola", "Gracias", "Por favor"],
+        "correctAnswer": 1,
+        "explanation": "Hola is the most common way to say hello in Spanish."
+      },
+      {
+        "id": "q2",
+        "question": "What does 'Buenos días' mean?",
+        "type": "multiple-choice",
+        "options": ["Good evening", "Good morning", "Good night", "Goodbye"],
+        "correctAnswer": 1,
+        "explanation": "Buenos días means 'good morning' and is used until around noon."
+      },
+      {
+        "id": "q3",
+        "question": "Which greeting would you use in the evening?",
+        "type": "multiple-choice",
+        "options": ["Buenos días", "Buenas tardes", "Buenas noches", "Both B and C"],
+        "correctAnswer": 3,
+        "explanation": "Both 'Buenas tardes' (good afternoon/evening) and 'Buenas noches' (good night) can be used in the evening."
+      },
+      {
+        "id": "q4",
+        "question": "How do you say 'Goodbye' in Spanish?",
+        "type": "multiple-choice",
+        "options": ["Hola", "Gracias", "Adiós", "De nada"],
+        "correctAnswer": 2,
+        "explanation": "Adiós is the standard way to say goodbye in Spanish."
+      }
+    ]
+  },
+  {
+    "id": "spanish-2-quiz",
+    "lessonId": "spanish-2",
+    "title": "Numbers 1-20 Quiz",
+    "passingScore": 75,
+    "xpReward": 60,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "What number is 'cinco'?",
+        "type": "multiple-choice",
+        "options": ["4", "5", "6", "7"],
+        "correctAnswer": 1,
+        "explanation": "Cinco means five in Spanish."
+      },
+      {
+        "id": "q2",
+        "question": "How do you say '10' in Spanish?",
+        "type": "multiple-choice",
+        "options": ["Nueve", "Diez", "Once", "Doce"],
+        "correctAnswer": 1,
+        "explanation": "Diez is ten in Spanish."
+      },
+      {
+        "id": "q3",
+        "question": "What comes after 'quince' (15)?",
+        "type": "multiple-choice",
+        "options": ["Catorce", "Dieciséis", "Diecisiete", "Dieciocho"],
+        "correctAnswer": 1,
+        "explanation": "After quince (15) comes dieciséis (16)."
+      }
+    ]
+  },
+  {
+    "id": "french-1-quiz",
+    "lessonId": "french-1",
+    "title": "Subjunctive Mood Quiz",
+    "passingScore": 80,
+    "xpReward": 75,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "Which sentence uses the subjunctive correctly?",
+        "type": "multiple-choice",
+        "options": [
+          "Je pense qu'il vient",
+          "Il faut qu'il vienne",
+          "Je sais qu'il viendra",
+          "Il dit qu'il vient"
+        ],
+        "correctAnswer": 1,
+        "explanation": "After 'Il faut que' (it is necessary that), the subjunctive mood is required."
+      },
+      {
+        "id": "q2",
+        "question": "What triggers the subjunctive mood?",
+        "type": "multiple-choice",
+        "options": [
+          "Facts and certainty",
+          "Doubt and emotion",
+          "Past events",
+          "Future plans"
+        ],
+        "correctAnswer": 1,
+        "explanation": "The subjunctive is used to express doubt, emotion, desire, and hypothetical situations."
+      }
+    ]
+  },
+  {
+    "id": "german-1-quiz",
+    "lessonId": "german-1",
+    "title": "German Pronunciation Quiz",
+    "passingScore": 70,
+    "xpReward": 55,
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How is the German 'W' pronounced?",
+        "type": "multiple-choice",
+        "options": ["Like English 'W'", "Like English 'V'", "Like English 'F'", "Silent"],
+        "correctAnswer": 1,
+        "explanation": "German 'W' is pronounced like the English 'V' sound."
+      },
+      {
+        "id": "q2",
+        "question": "How should 'Vater' be pronounced?",
+        "type": "multiple-choice",
+        "options": ["VAH-ter", "FAH-ter", "WA-ter", "VA-ter"],
+        "correctAnswer": 1,
+        "explanation": "German 'V' is pronounced like English 'F', so 'Vater' sounds like 'FAH-ter'."
+      }
+    ]
+  }
+]

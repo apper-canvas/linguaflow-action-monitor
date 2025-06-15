@@ -1,0 +1,81 @@
+[
+  {
+    "id": "spanish-1",
+    "courseId": "spanish-basics",
+    "title": "Basic Greetings",
+    "duration": 480,
+    "videoUrl": "https://example.com/video1.mp4",
+    "transcript": "In this lesson, we'll learn essential Spanish greetings. Hola means hello, Buenos días means good morning, and Buenas tardes means good afternoon or evening.",
+    "vocabulary": [
+      { "word": "Hola", "translation": "Hello", "pronunciation": "OH-lah" },
+      { "word": "Buenos días", "translation": "Good morning", "pronunciation": "BWAY-nohs DEE-ahs" },
+      { "word": "Buenas tardes", "translation": "Good afternoon", "pronunciation": "BWAY-nahs TAR-dehs" },
+      { "word": "Adiós", "translation": "Goodbye", "pronunciation": "ah-dee-OHS" }
+    ],
+    "completed": true,
+    "order": 1
+  },
+  {
+    "id": "spanish-2",
+    "courseId": "spanish-basics",
+    "title": "Numbers 1-20",
+    "duration": 360,
+    "videoUrl": "https://example.com/video2.mp4",
+    "transcript": "Let's count in Spanish! Uno, dos, tres, cuatro, cinco... Practice these numbers daily to build your confidence.",
+    "vocabulary": [
+      { "word": "Uno", "translation": "One", "pronunciation": "OO-noh" },
+      { "word": "Dos", "translation": "Two", "pronunciation": "dohs" },
+      { "word": "Tres", "translation": "Three", "pronunciation": "trehs" },
+      { "word": "Cuatro", "translation": "Four", "pronunciation": "KWAH-troh" },
+      { "word": "Cinco", "translation": "Five", "pronunciation": "SEEN-koh" }
+    ],
+    "completed": true,
+    "order": 2
+  },
+  {
+    "id": "spanish-3",
+    "courseId": "spanish-basics",
+    "title": "Family Members",
+    "duration": 420,
+    "videoUrl": "https://example.com/video3.mp4",
+    "transcript": "Family is important in Spanish culture. Learn how to say mother (madre), father (padre), brother (hermano), and sister (hermana).",
+    "vocabulary": [
+      { "word": "Familia", "translation": "Family", "pronunciation": "fah-MEE-lee-ah" },
+      { "word": "Madre", "translation": "Mother", "pronunciation": "MAH-dreh" },
+      { "word": "Padre", "translation": "Father", "pronunciation": "PAH-dreh" },
+      { "word": "Hermano", "translation": "Brother", "pronunciation": "er-MAH-noh" }
+    ],
+    "completed": false,
+    "order": 3
+  },
+  {
+    "id": "french-1",
+    "courseId": "french-intermediate",
+    "title": "Subjunctive Mood",
+    "duration": 600,
+    "videoUrl": "https://example.com/video4.mp4",
+    "transcript": "The subjunctive mood in French expresses doubt, emotion, and hypothetical situations. Il faut que tu viennes - You must come.",
+    "vocabulary": [
+      { "word": "Il faut que", "translation": "It is necessary that", "pronunciation": "eel foh kuh" },
+      { "word": "Je doute que", "translation": "I doubt that", "pronunciation": "zhuh doot kuh" },
+      { "word": "Bien que", "translation": "Although", "pronunciation": "bee-ahn kuh" }
+    ],
+    "completed": true,
+    "order": 1
+  },
+  {
+    "id": "german-1",
+    "courseId": "german-beginner",
+    "title": "German Pronunciation",
+    "duration": 540,
+    "videoUrl": "https://example.com/video5.mp4",
+    "transcript": "German pronunciation follows consistent rules. The letter 'W' sounds like 'V' in English, and 'V' sounds like 'F'.",
+    "vocabulary": [
+      { "word": "Wasser", "translation": "Water", "pronunciation": "VAH-ser" },
+      { "word": "Vater", "translation": "Father", "pronunciation": "FAH-ter" },
+      { "word": "Wie", "translation": "How", "pronunciation": "vee" }
+    ],
+    "completed": true,
+    "order": 1
+  }
+]

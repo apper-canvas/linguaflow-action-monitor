@@ -1,0 +1,82 @@
+[
+  {
+    "id": "spanish-card-1",
+    "courseId": "spanish-basics",
+    "front": "Hola",
+    "back": "Hello",
+    "audioUrl": "https://example.com/audio/hola.mp3",
+    "difficulty": 1,
+    "lastReviewed": "2024-01-15T10:30:00Z",
+    "category": "Greetings"
+  },
+  {
+    "id": "spanish-card-2",
+    "courseId": "spanish-basics",
+    "front": "Gracias",
+    "back": "Thank you",
+    "audioUrl": "https://example.com/audio/gracias.mp3",
+    "difficulty": 2,
+    "lastReviewed": "2024-01-14T14:20:00Z",
+    "category": "Politeness"
+  },
+  {
+    "id": "spanish-card-3",
+    "courseId": "spanish-basics",
+    "front": "¿Cómo está usted?",
+    "back": "How are you? (formal)",
+    "audioUrl": "https://example.com/audio/como-esta.mp3",
+    "difficulty": 3,
+    "lastReviewed": "2024-01-13T09:15:00Z",
+    "category": "Questions"
+  },
+  {
+    "id": "spanish-card-4",
+    "courseId": "spanish-basics",
+    "front": "Me llamo",
+    "back": "My name is",
+    "audioUrl": "https://example.com/audio/me-llamo.mp3",
+    "difficulty": 2,
+    "lastReviewed": "2024-01-12T16:45:00Z",
+    "category": "Introductions"
+  },
+  {
+    "id": "french-card-1",
+    "courseId": "french-intermediate",
+    "front": "Néanmoins",
+    "back": "Nevertheless",
+    "audioUrl": "https://example.com/audio/neanmoins.mp3",
+    "difficulty": 4,
+    "lastReviewed": "2024-01-10T11:20:00Z",
+    "category": "Conjunctions"
+  },
+  {
+    "id": "french-card-2",
+    "courseId": "french-intermediate",
+    "front": "Bien que",
+    "back": "Although",
+    "audioUrl": "https://example.com/audio/bien-que.mp3",
+    "difficulty": 3,
+    "lastReviewed": "2024-01-11T13:30:00Z",
+    "category": "Conjunctions"
+  },
+  {
+    "id": "german-card-1",
+    "courseId": "german-beginner",
+    "front": "Entschuldigung",
+    "back": "Excuse me / Sorry",
+    "audioUrl": "https://example.com/audio/entschuldigung.mp3",
+    "difficulty": 5,
+    "lastReviewed": "2024-01-09T08:15:00Z",
+    "category": "Politeness"
+  },
+  {
+    "id": "german-card-2",
+    "courseId": "german-beginner",
+    "front": "Wie geht es Ihnen?",
+    "back": "How are you? (formal)",
+    "audioUrl": "https://example.com/audio/wie-geht-es.mp3",
+    "difficulty": 4,
+    "lastReviewed": "2024-01-08T15:45:00Z",
+    "category": "Questions"
+  }
+]

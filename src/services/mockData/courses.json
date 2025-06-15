@@ -1,0 +1,57 @@
+[
+  {
+    "id": "spanish-basics",
+    "language": "Spanish",
+    "level": "Beginner",
+    "totalLessons": 12,
+    "completedLessons": 5,
+    "iconUrl": "🇪🇸",
+    "description": "Master the fundamentals of Spanish with interactive lessons covering basic grammar, vocabulary, and conversation skills.",
+    "color": "#EF4444",
+    "progress": 42
+  },
+  {
+    "id": "french-intermediate",
+    "language": "French",
+    "level": "Intermediate",
+    "totalLessons": 10,
+    "completedLessons": 3,
+    "iconUrl": "🇫🇷",
+    "description": "Advance your French skills with complex grammar structures, idiomatic expressions, and cultural contexts.",
+    "color": "#3B82F6",
+    "progress": 30
+  },
+  {
+    "id": "german-beginner",
+    "language": "German",
+    "level": "Beginner",
+    "totalLessons": 15,
+    "completedLessons": 8,
+    "iconUrl": "🇩🇪",
+    "description": "Start your German journey with systematic approach to pronunciation, basic grammar, and everyday vocabulary.",
+    "color": "#10B981",
+    "progress": 53
+  },
+  {
+    "id": "italian-basics",
+    "language": "Italian",
+    "level": "Beginner",
+    "totalLessons": 14,
+    "completedLessons": 0,
+    "iconUrl": "🇮🇹",
+    "description": "Learn beautiful Italian through engaging lessons focused on practical communication and cultural understanding.",
+    "color": "#F59E0B",
+    "progress": 0
+  },
+  {
+    "id": "japanese-beginner",
+    "language": "Japanese",
+    "level": "Beginner",
+    "totalLessons": 20,
+    "completedLessons": 2,
+    "iconUrl": "🇯🇵",
+    "description": "Discover Japanese language and culture with hiragana, katakana, basic kanji, and essential phrases.",
+    "color": "#8B5CF6",
+    "progress": 10
+  }
+]
