@@ -222,7 +222,7 @@ const loadLesson = async () => {
           Take Quiz
         </Button>
 
-        {/* Practice Flashcards */}
+{/* Practice Flashcards */}
         <Button
           onClick={handlePracticeFlashcards}
           variant="outline"
@@ -230,6 +230,16 @@ const loadLesson = async () => {
           className="w-full"
         >
           Practice Vocabulary
+        </Button>
+
+        {/* Speaking Practice */}
+        <Button
+          onClick={() => navigate('/speaking-practice')}
+          variant="accent"
+          icon="Mic"
+          className="w-full"
+        >
+          Speaking Practice
         </Button>
       </motion.div>
 

@@ -4,6 +4,7 @@ import Quiz from '@/components/pages/Quiz';
 import Progress from '@/components/pages/Progress';
 import Flashcards from '@/components/pages/Flashcards';
 import Leaderboard from '@/components/pages/Leaderboard';
+import SpeakingPractice from '@/components/pages/SpeakingPractice';
 
 export const routes = {
   dashboard: {
@@ -41,12 +42,19 @@ export const routes = {
     icon: 'FileQuestion',
     component: Quiz
   },
-  progress: {
+progress: {
     id: 'progress',
     label: 'Progress',
     path: '/progress',
     icon: 'TrendingUp',
     component: Progress
+  },
+  speakingPractice: {
+    id: 'speakingPractice',
+    label: 'Speaking Practice',
+    path: '/speaking-practice',
+    icon: 'Mic',
+    component: SpeakingPractice
   }
 };
 

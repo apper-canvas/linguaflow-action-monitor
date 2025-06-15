@@ -131,18 +131,19 @@ const Dashboard = () => {
             </p>
           </motion.div>
 
-          <motion.div
+<motion.div
             whileHover={{ y: -4 }}
+            onClick={() => window.location.href = '/speaking-practice'}
             className="bg-white rounded-lg shadow-md p-6 cursor-pointer border-2 border-transparent hover:border-accent/20"
           >
             <div className="flex items-center space-x-3 mb-3">
               <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
-                <ApperIcon name="Volume2" className="w-5 h-5 text-accent" />
+                <ApperIcon name="Mic" className="w-5 h-5 text-accent" />
               </div>
-              <h3 className="font-semibold text-surface-900">Pronunciation</h3>
+              <h3 className="font-semibold text-surface-900">Speaking Practice</h3>
             </div>
             <p className="text-sm text-surface-600">
-              Practice speaking with audio exercises
+              Record yourself and get pronunciation feedback
             </p>
           </motion.div>
 

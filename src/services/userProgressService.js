@@ -12,10 +12,19 @@ const initialProgress = {
     'french-intermediate': { completedLessons: 3, totalLessons: 10, xp: 300 },
     'german-beginner': { completedLessons: 8, totalLessons: 15, xp: 500 }
   },
+  speakingProgress: {
+    totalPractices: 12,
+    averageScore: 85,
+    streakDays: 3,
+    completedExercises: 24,
+    pronunciationImprovement: 15
+  },
   achievements: [
     { id: 'first-lesson', name: 'First Steps', description: 'Complete your first lesson', unlocked: true },
     { id: 'streak-7', name: 'Week Warrior', description: '7-day learning streak', unlocked: true },
-    { id: 'xp-1000', name: 'XP Master', description: 'Earn 1000 XP', unlocked: true }
+    { id: 'xp-1000', name: 'XP Master', description: 'Earn 1000 XP', unlocked: true },
+    { id: 'first-recording', name: 'Voice Activated', description: 'Complete your first speaking exercise', unlocked: true },
+    { id: 'pronunciation-80', name: 'Clear Speaker', description: 'Achieve 80% pronunciation accuracy', unlocked: true }
   ]
 };
 
@@ -79,7 +88,7 @@ const userProgressService = {
     return { ...userProgressData };
   },
 
-  async updateCourseProgress(courseId, completedLessons) {
+async updateCourseProgress(courseId, completedLessons) {
     await delay(250);
     if (userProgressData.coursesProgress[courseId]) {
       userProgressData.coursesProgress[courseId].completedLessons = completedLessons;
@@ -87,7 +96,42 @@ const userProgressService = {
     return { ...userProgressData };
   },
 
-  async unlockAchievement(achievementId) {
+  async updateSpeakingProgress(score, exerciseType) {
+    await delay(300);
+    if (!userProgressData.speakingProgress) {
+      userProgressData.speakingProgress = {
+        totalPractices: 0,
+        averageScore: 0,
+        streakDays: 0,
+        completedExercises: 0,
+        pronunciationImprovement: 0
+      };
+    }
+    
+    const speaking = userProgressData.speakingProgress;
+    speaking.totalPractices += 1;
+    speaking.completedExercises += 1;
+    speaking.averageScore = Math.round(
+      (speaking.averageScore * (speaking.totalPractices - 1) + score) / speaking.totalPractices
+    );
+    
+    // Award XP based on performance
+    const xpEarned = Math.max(10, Math.round(score / 5));
+    userProgressData.totalXP += xpEarned;
+    
+    toast.success(`Speaking practice complete! +${xpEarned} XP`, {
+      className: 'bg-gradient-to-r from-accent to-warning text-white'
+    });
+    
+    // Check for achievements
+    if (score >= 80 && !userProgressData.achievements.find(a => a.id === 'pronunciation-80')?.unlocked) {
+      await this.unlockAchievement('pronunciation-80');
+    }
+    
+    return { ...userProgressData };
+  },
+
+async unlockAchievement(achievementId) {
     await delay(200);
     const achievement = userProgressData.achievements.find(a => a.id === achievementId);
     if (achievement && !achievement.unlocked) {
@@ -96,24 +140,22 @@ const userProgressService = {
         autoClose: 5000
       });
     }
-return { ...userProgressData };
+    return { ...userProgressData };
   }
 };
-
 // Mock leaderboard data
 const mockLeaderboardData = [
-  { id: 1, name: 'Emma Rodriguez', avatar: '👩‍💼', weeklyXP: 2450, totalXP: 15670, rank: 1, languages: ['Spanish', 'French'] },
-  { id: 2, name: 'Chen Wei', avatar: '👨‍💻', weeklyXP: 2380, totalXP: 18920, rank: 2, languages: ['Mandarin', 'English'] },
-  { id: 3, name: 'Aisha Patel', avatar: '👩‍🎓', weeklyXP: 2220, totalXP: 14350, rank: 3, languages: ['Hindi', 'German'] },
-  { id: 4, name: 'Marcus Johnson', avatar: '👨‍🏫', weeklyXP: 1980, totalXP: 12450, rank: 4, languages: ['English', 'Spanish'] },
-  { id: 5, name: 'Sofia Rossi', avatar: '👩‍🎨', weeklyXP: 1850, totalXP: 13200, rank: 5, languages: ['Italian', 'French'] },
-  { id: 6, name: 'You', avatar: '👤', weeklyXP: 1250, totalXP: 1250, rank: 6, languages: ['Spanish', 'French', 'German'], isCurrentUser: true },
-  { id: 7, name: 'Dmitri Volkov', avatar: '👨‍🔬', weeklyXP: 1180, totalXP: 9800, rank: 7, languages: ['Russian', 'English'] },
-  { id: 8, name: 'Fatima Al-Zahra', avatar: '👩‍⚕️', weeklyXP: 1050, totalXP: 8650, rank: 8, languages: ['Arabic', 'French'] },
-  { id: 9, name: 'Hiroshi Tanaka', avatar: '👨‍💼', weeklyXP: 920, totalXP: 7430, rank: 9, languages: ['Japanese', 'English'] },
-  { id: 10, name: 'Isabella Santos', avatar: '👩‍🏫', weeklyXP: 840, totalXP: 6890, rank: 10, languages: ['Portuguese', 'Spanish'] }
+  { id: 1, name: 'Emma Rodriguez', avatar: '👩‍💼', weeklyXP: 2450, totalXP: 15670, rank: 1, languages: ['Spanish', 'French'], speakingScore: 92 },
+  { id: 2, name: 'Chen Wei', avatar: '👨‍💻', weeklyXP: 2380, totalXP: 18920, rank: 2, languages: ['Mandarin', 'English'], speakingScore: 88 },
+  { id: 3, name: 'Aisha Patel', avatar: '👩‍🎓', weeklyXP: 2220, totalXP: 14350, rank: 3, languages: ['Hindi', 'German'], speakingScore: 90 },
+  { id: 4, name: 'Marcus Johnson', avatar: '👨‍🏫', weeklyXP: 1980, totalXP: 12450, rank: 4, languages: ['English', 'Spanish'], speakingScore: 86 },
+  { id: 5, name: 'Sofia Rossi', avatar: '👩‍🎨', weeklyXP: 1850, totalXP: 13200, rank: 5, languages: ['Italian', 'French'], speakingScore: 89 },
+  { id: 6, name: 'You', avatar: '👤', weeklyXP: 1250, totalXP: 1250, rank: 6, languages: ['Spanish', 'French', 'German'], isCurrentUser: true, speakingScore: 85 },
+  { id: 7, name: 'Dmitri Volkov', avatar: '👨‍🔬', weeklyXP: 1180, totalXP: 9800, rank: 7, languages: ['Russian', 'English'], speakingScore: 82 },
+  { id: 8, name: 'Fatima Al-Zahra', avatar: '👩‍⚕️', weeklyXP: 1050, totalXP: 8650, rank: 8, languages: ['Arabic', 'French'], speakingScore: 87 },
+  { id: 9, name: 'Hiroshi Tanaka', avatar: '👨‍💼', weeklyXP: 920, totalXP: 7430, rank: 9, languages: ['Japanese', 'English'], speakingScore: 84 },
+  { id: 10, name: 'Isabella Santos', avatar: '👩‍🏫', weeklyXP: 840, totalXP: 6890, rank: 10, languages: ['Portuguese', 'Spanish'], speakingScore: 83 }
 ];
-
 export const useLeaderboard = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [loading, setLoading] = useState(false);
