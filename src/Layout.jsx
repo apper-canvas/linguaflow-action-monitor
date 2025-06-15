@@ -9,8 +9,9 @@ const Layout = () => {
   const location = useLocation();
   const { userProgress } = useUserProgress();
 
-  const navItems = [
+const navItems = [
     { path: '/', label: 'Dashboard', icon: 'Home' },
+    { path: '/leaderboard', label: 'Leaderboard', icon: 'Trophy' },
     { path: '/progress', label: 'Progress', icon: 'TrendingUp' }
   ];
 

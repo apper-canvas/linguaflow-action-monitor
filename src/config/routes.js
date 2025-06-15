@@ -3,6 +3,7 @@ import LessonDetail from '@/components/pages/LessonDetail';
 import Quiz from '@/components/pages/Quiz';
 import Progress from '@/components/pages/Progress';
 import Flashcards from '@/components/pages/Flashcards';
+import Leaderboard from '@/components/pages/Leaderboard';
 
 export const routes = {
   dashboard: {
@@ -11,6 +12,13 @@ export const routes = {
     path: '/',
     icon: 'Home',
     component: Dashboard
+  },
+  leaderboard: {
+    id: 'leaderboard',
+    label: 'Leaderboard',
+    path: '/leaderboard',
+    icon: 'Trophy',
+    component: Leaderboard
   },
   lesson: {
     id: 'lesson',
@@ -43,4 +51,5 @@ export const routes = {
 };
 
 export const routeArray = Object.values(routes);
+
 export default routes;

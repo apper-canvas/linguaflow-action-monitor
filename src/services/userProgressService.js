@@ -96,8 +96,67 @@ const userProgressService = {
         autoClose: 5000
       });
     }
-    return { ...userProgressData };
+return { ...userProgressData };
   }
 };
+
+// Mock leaderboard data
+const mockLeaderboardData = [
+  { id: 1, name: 'Emma Rodriguez', avatar: '👩‍💼', weeklyXP: 2450, totalXP: 15670, rank: 1, languages: ['Spanish', 'French'] },
+  { id: 2, name: 'Chen Wei', avatar: '👨‍💻', weeklyXP: 2380, totalXP: 18920, rank: 2, languages: ['Mandarin', 'English'] },
+  { id: 3, name: 'Aisha Patel', avatar: '👩‍🎓', weeklyXP: 2220, totalXP: 14350, rank: 3, languages: ['Hindi', 'German'] },
+  { id: 4, name: 'Marcus Johnson', avatar: '👨‍🏫', weeklyXP: 1980, totalXP: 12450, rank: 4, languages: ['English', 'Spanish'] },
+  { id: 5, name: 'Sofia Rossi', avatar: '👩‍🎨', weeklyXP: 1850, totalXP: 13200, rank: 5, languages: ['Italian', 'French'] },
+  { id: 6, name: 'You', avatar: '👤', weeklyXP: 1250, totalXP: 1250, rank: 6, languages: ['Spanish', 'French', 'German'], isCurrentUser: true },
+  { id: 7, name: 'Dmitri Volkov', avatar: '👨‍🔬', weeklyXP: 1180, totalXP: 9800, rank: 7, languages: ['Russian', 'English'] },
+  { id: 8, name: 'Fatima Al-Zahra', avatar: '👩‍⚕️', weeklyXP: 1050, totalXP: 8650, rank: 8, languages: ['Arabic', 'French'] },
+  { id: 9, name: 'Hiroshi Tanaka', avatar: '👨‍💼', weeklyXP: 920, totalXP: 7430, rank: 9, languages: ['Japanese', 'English'] },
+  { id: 10, name: 'Isabella Santos', avatar: '👩‍🏫', weeklyXP: 840, totalXP: 6890, rank: 10, languages: ['Portuguese', 'Spanish'] }
+];
+
+export const useLeaderboard = () => {
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadLeaderboard = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        await delay(300);
+        setLeaderboard([...mockLeaderboardData]);
+      } catch (err) {
+        setError(err.message || 'Failed to load leaderboard');
+        toast.error('Failed to load leaderboard');
+      } finally {
+        setLoading(false);
+      }
+    };
+    loadLeaderboard();
+  }, []);
+
+  return { leaderboard, loading, error };
+};
+
+const leaderboardService = {
+  async getWeeklyRankings() {
+    await delay(300);
+    return [...mockLeaderboardData];
+  },
+
+  async getUserRank(userId = 6) {
+    await delay(200);
+    const user = mockLeaderboardData.find(u => u.id === userId);
+    return user ? { ...user } : null;
+  },
+
+  async getTopPerformers(limit = 3) {
+    await delay(250);
+    return [...mockLeaderboardData].slice(0, limit);
+  }
+};
+
+export { leaderboardService };
 
 export default userProgressService;
